@@ -1,0 +1,38 @@
+###Get products by name
+GET http://localhost:3003/product?name=1
+
+
+### Delete User by id
+DELETE http://localhost:3003/users/u002
+
+### Delete product by id
+DELETE http://localhost:3003/users/p
+
+### Edit Product by id
+PUT http://localhost:3003/products/prod002
+Content-Type: application/json
+
+{
+    
+    "id":"idteste",
+    "name": "teste",
+    "price": 10,
+    "description": "Ouro",
+    "ImageUrl":"blabla"
+}
+
+### create new user
+PUT http://localhost:3003/users
+Content-Type: application/json
+
+{
+    
+    "id":"idteste",
+    "name": "teste",
+    "price": 10,
+    "description": "Ouro",
+    "ImageUrl":"blabla"
+}
+
+
+
