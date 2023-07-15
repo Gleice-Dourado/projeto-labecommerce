@@ -1,7 +1,7 @@
 import express, { Request, Response, query } from 'express';
 import cors from 'cors'
 // import { createProduct, createUser, getAllProducts, getAllUsers, products, searchProductsByName, searchUsersByName, users } from "./database";
-import { TProduct, TUser } from './types';
+import { TProduct, TPurchase, TUser } from './types';
 
 import { db } from "../src/database/knex";
 //configurando o express
@@ -441,3 +441,96 @@ app.put("/products/:id", async (req: Request, res: Response) => {
         }
     }
 });
+
+//CREATE PURCHASE //rever
+app.post("/purchases", async (req: Request<{}, {}, TPurchase>, res: Response) => {
+    try {
+      const { id, buyer, products } = req.body;
+  
+      if (!id || !buyer || !products) {
+        res.status(400);
+        throw new Error("All fields must be filled in to create a new purchase");
+      }
+  
+      const existingPurchaseById = await db.raw(`
+        SELECT * FROM purchases WHERE id = '${id}';
+      `);
+  
+      if (existingPurchaseById ) {
+        res.status(400);
+        throw new Error("Purchase with this ID already exists");
+      }
+  
+      // Inserir a nova compra no banco de dados
+      await db.raw(`
+        INSERT INTO purchases (id, buyer)
+        VALUES ('${id}', '${buyer}');
+      `);
+  
+      // Inserir os produtos da compra na tabela de produtos da compra
+      const insertProductPromises = products.map((product) =>
+        db.raw(`
+          INSERT INTO purchases_products (purchase_id, product_id, quantity)
+          VALUES ('${id}', '${product.id}', ${product.quantity});
+        `)
+      );
+  
+      await Promise.all(insertProductPromises);
+  
+      res.status(201).send("Pedido realizado com sucesso" );
+    } catch (error: any) {
+      if (error instanceof Error) {
+        res.send(error.message);
+      } else {
+        res.send("Unknown error.");
+      }
+    }
+  });
+
+  
+  //DELETE PURCHASE BY ID
+
+  app.delete("/purchases/:id", async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+  
+      if (!id) {
+        res.status(422);
+        throw new Error("Please provide the purchase ID.");
+      }
+  
+      if (typeof id !== "string") {
+        res.status(422);
+        throw new Error("Invalid information type. The purchase ID must be a string. Please try again.");
+      }
+  
+      if (typeof (id) === "string") {
+        if (id.length < 2 || id[0] !== "pur") {
+          res.status(422);
+          throw new Error('Invalid information. The purchase ID must start with the letters "pur" and have at least two characters. Please try again.');
+        }
+      }
+  
+      // Check if the purchase exists
+      const findPurchase = await db.raw(`SELECT * FROM purchases WHERE id = '${id}';`);
+  
+      if (findPurchase && findPurchase[0].length > 0) {
+        await db.raw(`DELETE FROM purchases WHERE id = '${id}';`);
+  
+        // Também é necessário deletar os produtos associados à compra na tabela purchase_products
+        await db.raw(`DELETE FROM purchases_products WHERE purchase_id = '${id}';`);
+  
+        res.status(200).send("Pedido cancelado com sucesso");
+      } else {
+        res.status(200).send("Pedido não encontrado");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        res.send(error.message);
+      } else {
+        res.send("Unknown error.");
+      }
+    }
+  });
+  
+
