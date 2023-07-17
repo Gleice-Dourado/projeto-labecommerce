@@ -1,6 +1,6 @@
 # labecommerce-backend
 
-<img style="width:200px" src="./assets/labecommerce.png" alt="Labecommerce">
+<img style="width:500px" src="./assets/labecommerce.png" alt="Labecommerce">
 
 Este projeto consiste na criação de um banco de dados para gerenciar usuários, produtos e compras. O banco de dados será composto por quatro tabelas principais: users, products, purchases e purchases_products.
 
@@ -15,26 +15,18 @@ Este projeto consiste na criação de um banco de dados para gerenciar usuários
 
 ## 📱 Funcionalidades do projeto
 
-- [x] **Obter todos os usuários:** Endpoint para recuperar uma lista de todos os usuários registrados na plataforma.
+- [x] Get all users
+- [x] Create user
+- [x] Delete user by ID
+- [x] Create product
+- [x] Get all products
+- [x] Edit product by ID
+- [x] Delete product by ID
+- [x] Create purchase
+- [x] Delete purchase by ID
+- [x] Get purchase by ID
 
-- [x] **Criar usuário:** Endpoint para criar um novo usuário e adicioná-lo ao banco de dados.
-
-- [x] **Excluir usuário por ID:** Endpoint para remover um usuário do banco de dados usando o seu ID.
-
-- [x] **Criar produto:** Endpoint para adicionar um novo produto ao banco de dados.
-
-- [x] **Obter todos os produtos:** Endpoint para recuperar uma lista de todos os produtos disponíveis na plataforma.
-
-- [x] **Editar produto por ID:** Endpoint para atualizar as informações de um produto específico usando o seu ID.
-
-- [x] **Criar compra:** Endpoint para criar uma nova compra e associar produtos a ela.
-
-- [x] **Excluir compra por ID:** Endpoint para remover uma compra do banco de dados usando o seu ID.
-
-- [x] **Obter compra por ID:** Endpoint para recuperar informações detalhadas sobre uma compra específica usando o seu ID.
-
-
-## Como rodar este projeto?
+## 🏃‍♀️ Como rodar este projeto?
 ```bash
 # Clone este repositório
 $ git clone repolink
@@ -57,7 +49,7 @@ $ npm run dev
 5. [Knex]()
 6. [Postman]()
 
-## Requisições(paths)
+## 💾 Requisições(paths)
 
 #### REQUISIÇÔES DE USUARIOS:
 
@@ -71,32 +63,35 @@ $ npm run dev
 
 - /purchases
 
-## Exemplos de requisições
+## 📥 Exemplos de requisições
 
 #### Get all users
 
-<img style="width:200px" src="./assets/get all users.png" alt="Get all users">
+<img style="width:600px" src="./assets/get all users.png" alt="Get all users">
 
 #### Get all products
 
-<img style="width:200px" src="./assets/get all products.png" alt="Get all products">
+<img style="width:600px" src="./assets/get all products.png" alt="Get all products">
 
 #### Edit product by id
 
-<img style="width:200px" src="./assets/edit product by id.png" alt="Edit product by id">
+<img style="width:600px" src="./assets/Edit product by id .png" alt="Edit product by id">
 
 #### Create purchase
 
-<img style="width:200px" src="./assets/create purchase.png" alt="Create purchase">
+<img style="width:600px" src="./assets/create purchase.png" alt="Create purchase">
 
 #### Get purchase by id
 
-<img style="width:200px" src="./assets/get purchase by id.png" alt="Get purchase by id">
+<img style="width:600px" src="./assets/get purchase by id.png" alt="Get purchase by id">
 
 #### Delete purchase by id
 
-<img style="width:200px" src="./assets/delete purchase by id.png" alt="Delete purchase by id">
+<img style="width:600px" src="./assets/Delete purchase by id.png" alt="Delete purchase by id">
 
+## 📚 Documentação
+
+- https://documenter.getpostman.com/view/26594102/2s93z87hzf
 
 ## 👩🏽‍💻 Pessoas Autoras
 
