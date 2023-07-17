@@ -15,3 +15,10 @@ export type TProduct = {
     description:string,
     imageUrl:string
 }
+
+
+export type TPurchase = {
+    id: string,
+    buyer: string,
+    products: {id: string, quantity: number}[]
+}
