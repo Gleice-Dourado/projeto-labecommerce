@@ -2,7 +2,7 @@
 
 <img style="width:500px" src="./assets/labecommerce.png" alt="Labecommerce">
 
-Este projeto consiste na criação de uma API vinculada a um banco de dados real. O banco de dados será composto por quatro tabelas principais: users, products, purchases e purchases_products. E atraves dos endpoints será possivel inserir, ler, editar e deletar os dados cadastrados.
+Este projeto consiste na criação de uma API vinculada a um banco de dados real. O banco de dados será composto por quatro tabelas principais: users, products, purchases e purchases_products. E através dos endpoints será possivel inserir, ler, editar e deletar os dados cadastrados.
 
 ## Indice
 -  <a href="#funcionalidades">Funcionalidades do projeto<a>
